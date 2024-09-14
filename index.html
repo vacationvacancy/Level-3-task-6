@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Online CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2em 0;
+        }
+        .bio, .contact, .skills, .education, .experience {
+            margin-bottom: 2em;
+        }
+        .profile-pic {
+            float: left;
+            margin-right: 20px;
+            border-radius: 50%;
+            width: 150px;
+        }
+        .form-section {
+            background: #f4f4f4;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        .highlight {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JH's Online CV</h1>
+    </header>
+    <div class="container">
+        <section class="bio">
+            <h2>About Me</h2>
+            <img src="oblique1.jpg" alt="Profile Picture" class="profile-pic">
+            <p>Hello! I am JH, an aspiring software engineer and UI designer. I am passionate about creating efficient and aesthetically pleasing digital experiences. As a part-time art teacher, I bring a unique blend of creativity and technical expertise to my projects. My interests lie in design, development, and continuous learning.</p>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Details</h2>
+            <p>Name: JH Boonzaaier</p>
+            <p>Contact Number: +27 62 499 8857</p>
+            <p>Email: boonzaaierjh444@gmail.com</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/jh-boonzaaier-59371a321/" target="_blank">linkedin.com/in/JHBoonzaaier</a></p>
+        </section>
+
+        <section class="skills">
+            <h2>Skills and Competencies</h2>
+            <ul>
+                <li>HTML, CSS</li>
+                <li>React, Angular</li>
+                <li>Python, Django</li>
+                <li>Version Control (Git)</li>
+                <li>Responsive Web Design</li>
+            </ul>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+            <p>HyperionDev Software Initiate</p>
+            <p>Paul Roos Gimnasium Graduate</p>
+        </section>
+
+        <section class="experience">
+            <h2>Work Experience</h2>
+            <p>Developed and maintained web applications, collaborated with small teams, and implemented new features based on client requirements.</p>
+            <p>Web Developer</p>
+            <p>Worked on various client projects, ensuring high-quality code and user-friendly designs.</p>
+        </section>
+
+    <section class="form-section">
+        <h2>Search My CV</h2>
+        <form method="GET" action="/search-results">
+            <label for="site-search">Search the site:</label>
+            <input type="search" id="site-search" name="q">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+        <section class="form-section">
+            <h2>Contact Me</h2>
+            <form method="POST" action="/contact">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <br>
+                <input type="submit" value="Send">
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 JH Boonzaaier. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchCV() {
+            const query = document.getElementById('site-search').value.toLowerCase();
+            const sections = document.querySelectorAll('.container section');
+            let found = false;
+
+            sections.forEach(section => {
+                section.classList.remove('highlight');
+                if (section.innerText.toLowerCase().includes(query)) {
+                    section.classList.add('highlight');
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('No results found.');
+            }
+        }
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            searchCV();
+        });
+    </script>
+</body>
+</html>
